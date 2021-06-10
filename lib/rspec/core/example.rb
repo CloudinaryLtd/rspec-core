@@ -188,6 +188,8 @@ module RSpec
         # but the logic there has no knowledge of `RSpec.world` and we
         # want to keep it that way. It's easier to just assign it here.
         @metadata[:last_run_status] = RSpec.configuration.last_run_statuses[id]
+        # Force all unknown stati to appear as failed - so that we catch all the silently failing specs on the --only-failures rerun
+        @metadata[:last_run_status] = Configuration::FAILED_STATUS if  @metadata[:last_run_status] == Configuration::UNKNOWN_STATUS
 
         @example_group_instance = @exception = nil
         @clock = RSpec::Core::Time

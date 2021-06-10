@@ -894,6 +894,14 @@ module RSpec
       FAILED_STATUS = "failed".freeze
 
       # @private
+      def spec_files_last_run
+        @spec_files_with_failures ||= last_run_statuses.inject(Set.new) do |files, (id, _status)|
+          files << Example.parse_id(id).first
+          files
+        end.to_a
+      end
+
+      # @private
       def spec_files_with_failures
         @spec_files_with_failures ||= last_run_statuses.inject(Set.new) do |files, (id, status)|
           files << Example.parse_id(id).first if status == FAILED_STATUS
@@ -1732,8 +1740,10 @@ module RSpec
 
         return files unless only_failures?
         relative_files = files.map { |f| Metadata.relative_path(File.expand_path f) }
-        intersection = (relative_files & spec_files_with_failures.to_a)
-        intersection.empty? ? files : intersection
+        missing_files = relative_files - spec_files_last_run
+        files_with_failures = relative_files & spec_files_with_failures
+        files_to_run = missing_files | files_with_failures
+        files_to_run.empty? ? files : files_to_run
       end
 
       def paths_to_check(paths)
