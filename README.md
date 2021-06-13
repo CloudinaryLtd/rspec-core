@@ -1,6 +1,6 @@
 # Cloudinary
 
-Our branch is https://github.com/CloudinaryLtd/rspec-core/tree/v3.4.4-cld.
+Our branch is https://github.com/CloudinaryLtd/rspec-core/tree/v3.4.4-cld. For the current patch see https://github.com/CloudinaryLtd/rspec-core/compare/v3.4.4...v3.4.4-cld .
 
 # rspec-core [![Build Status](https://github.com/rspec/rspec-core/workflows/RSpec%20CI/badge.svg)](https://github.com/rspec/rspec-core/actions) [![Code Climate](https://codeclimate.com/github/rspec/rspec-core.svg)](https://codeclimate.com/github/rspec/rspec-core)
 
