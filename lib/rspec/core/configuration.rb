@@ -895,7 +895,7 @@ module RSpec
 
       # @private
       def spec_files_last_run
-        @spec_files_with_failures ||= last_run_statuses.inject(Set.new) do |files, (id, _status)|
+        @spec_files_last_run ||= last_run_statuses.inject(Set.new) do |files, (id, _status)|
           files << Example.parse_id(id).first
           files
         end.to_a
