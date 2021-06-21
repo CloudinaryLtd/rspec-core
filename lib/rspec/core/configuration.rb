@@ -904,7 +904,7 @@ module RSpec
       # @private
       def spec_files_with_failures
         @spec_files_with_failures ||= last_run_statuses.inject(Set.new) do |files, (id, status)|
-          files << Example.parse_id(id).first if status.in?([FAILED_STATUS, UNKNOWN_STATUS])
+          files << Example.parse_id(id).first if status == FAILED_STATUS || status == UNKNOWN_STATUS
           files
         end.to_a
       end
