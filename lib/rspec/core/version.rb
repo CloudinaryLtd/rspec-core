@@ -4,7 +4,7 @@ module RSpec
     module Version
       # Current version of RSpec Core, in semantic versioning format.
       # Cloudinary - forked off main at 3.4.4
-      STRING = '3.4.4.2'
+      STRING = '3.4.4.3'
     end
   end
 end
